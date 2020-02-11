@@ -22,6 +22,9 @@ app.use(express.json());
 const apiRoutes = require("./routes/apiRoutes");
 app.use("/api", apiRoutes);
 
+const htmlRoutes = require("./routes/htmlRoutes");
+app.use("/", htmlRoutes);
+
 app.listen(PORT, () => {
   console.log(`listening at: http://localhost:${PORT}`);
 });
