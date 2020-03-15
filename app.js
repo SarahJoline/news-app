@@ -4,6 +4,8 @@ const cheerio = require("cheerio");
 axios.get("https://www.nytimes.com/section/world").then(urlResponse => {
   let $ = cheerio.load(urlResponse.data);
 
+  let result = {};
+
   $("div.css-1l4spti").each((i, element) => {
     const imgLink = $(element)
       .find("figure")
@@ -15,8 +17,14 @@ axios.get("https://www.nytimes.com/section/world").then(urlResponse => {
       .find("a")
       .attr("href");
 
-    console.log(imgLink);
-    console.log(articleHeadline);
-    console.log(articleLink);
+    Article.create(result)
+      .then(function(data) {
+        console.log(data);
+      })
+      .catch(function(err) {
+        return res.json(err);
+      });
   });
+
+  res.send("Scrape Complete");
 });

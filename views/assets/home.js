@@ -1,15 +1,11 @@
-
 $("#scrapeBtn").on("click", function() {
-    
-    
-    $.ajax({
-      type: "GET",
-      url: "/api/new",
-      data: 
-    }).then(results => {
-      console.log(results)
-    });
+  $.ajax({
+    type: "GET",
+    url: "/api"
+  }).then(results => {
+    console.log(results);
   });
+});
 
 // <div class="card" style="width: 18rem;">
 //   <img src="..." class="card-img-top" alt="...">
