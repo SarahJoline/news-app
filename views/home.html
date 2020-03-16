@@ -15,6 +15,8 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <h3 class="navbar-brand">Mongo Scraper</h3>
 
+      
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
@@ -51,9 +53,14 @@
     
     $.ajax({
       type: "GET",
-      url: "/api/new"
+      url: "/api/all"
     }).then(results => {
       console.log(results)
+
+      for (var i = 0; i < results.length; i++) {
+
+	    $("#article-div").append("<div class='result-div'><p class='result-headline'>" + results[i].headline + "</p><a href='https://www.nytimes.com" + results[i].link + "'>Link to Article</a><button class='save-article button is-info is-medium' data-id='" + results[i]._id + "'>Save Article</button></div>");
+      }
     });
   });
 });

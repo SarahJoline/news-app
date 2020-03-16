@@ -14,7 +14,7 @@ const ArticleSchema = new Schema({
 
   link: {
     type: String,
-    required: "Must pass a tring value for link"
+    required: "Must pass a string value for link"
   },
 
   comments: {
