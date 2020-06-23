@@ -32,40 +32,11 @@
     </nav>
 
     <div id="article-div"></div>
-    <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
-    <script>
-      $(document).ready(function() {
-        $("#scrapeBtn").on("click", function() {
-    
-    
-    $.ajax({
-      type: "GET",
-      url: "/api/all"
-    }).then(results => {
-      console.log(results)
-
-      for (var i = 0; i < results.length; i++) {
-
-	    $("#article-div").append("<div class='result-div'><p class='result-headline'>" + results[i].headline + "</p><a href='https://www.nytimes.com" + results[i].link + "'>Link to Article</a><button class='save-article button is-info is-medium' data-id='" + results[i]._id + "'>Save Article</button></div>");
-      }
-    });
-  });
-});
 
 
-    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="./assets/home.js"></script>
   </body>
 </html>
