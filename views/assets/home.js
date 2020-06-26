@@ -26,5 +26,13 @@ $(document).ready(function () {
     const id = $(e.target).attr("dataId");
 
     console.log(id);
+    console.log("How is this popping up: ");
+
+    $.ajax({
+      method: "POST",
+      url: "/api/save/" + id,
+    }).then((data) => {
+      console.log(data);
+    });
   });
 });

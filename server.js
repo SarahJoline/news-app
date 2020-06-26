@@ -9,6 +9,7 @@ const MONGO_URI =
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 });
 
 connection.on("error", console.error.bind(console, "connection error:"));

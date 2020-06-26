@@ -32,7 +32,7 @@ router.get("/all", (req, res) => {
         }
       });
     });
-    res.send("Heyho");
+    res.send("scraped");
   });
 });
 
@@ -46,13 +46,28 @@ router.get("/articles", (req, res) => {
   });
 });
 
-router.post("/save", (req, res) => {
-  db.Articles.create(req.body)
-    .then((savedArticle) => {
-      res.send(savedArticle);
-    })
-    .catch((err) => res.send(err));
+router.get("/saved", (req, res) => {
+  db.Articles.find({ saved: true }, (error, doc) => {
+    if (error) {
+      console.log(error);
+    } else {
+      res.json(doc);
+    }
+  });
 });
+
+router.post("/save/:id", (req, res) => {
+  db.Articles.findOneAndUpdate({ _id: req.params.id }, { saved: true })
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      if (err) {
+        console.log(err);
+      }
+    });
+});
+
 router.post("/comment", (req, res) => {
   db.Articles.findByIdAndUpdate(
     { _id: req.query.id },
