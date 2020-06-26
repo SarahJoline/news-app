@@ -78,9 +78,11 @@ router.post("/comment", (req, res) => {
     })
     .catch((err) => res.send(err));
 });
+
 router.delete("/delete/:id", (req, res) => {
   db.Articles.deleteOne({ _id: req.params.id }).then(() => {
     res.send("success");
   });
 });
+
 module.exports = router;
