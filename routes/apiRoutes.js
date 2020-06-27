@@ -79,10 +79,24 @@ router.post("/comment", (req, res) => {
     .catch((err) => res.send(err));
 });
 
-router.delete("/delete/:id", (req, res) => {
-  db.Articles.deleteOne({ _id: req.params.id }).then(() => {
-    res.send("success");
-  });
+router.post("/deleteSaved/:id", (req, res) => {
+  db.Articles.findOneAndUpdate(
+    {
+      _id: req.params.id,
+    },
+    {
+      saved: false,
+    }
+  )
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      // Log any errors
+      if (err) {
+        console.log(err);
+      }
+    });
 });
 
 module.exports = router;

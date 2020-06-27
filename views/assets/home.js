@@ -54,4 +54,18 @@ $(document).ready(function () {
       );
     }
   });
+
+  $(document).on("click", "#remove-Btn", (e) => {
+    e.preventDefault();
+
+    const id = $(e.target).attr("dataId");
+    console.log(id);
+    $.ajax({
+      method: "POST",
+      url: "/api/deleteSaved/" + id,
+    }).done((data) => {
+      console.log(data);
+    });
+    window.location = "/saved-articles";
+  });
 });
