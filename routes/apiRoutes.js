@@ -92,7 +92,6 @@ router.post("/deleteSaved/:id", (req, res) => {
       console.log(res);
     })
     .catch((err) => {
-      // Log any errors
       if (err) {
         console.log(err);
       }

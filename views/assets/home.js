@@ -4,7 +4,7 @@ $(document).ready(function () {
       type: "GET",
       url: "/api/articles",
     }).then((results) => {
-      for (var i = 0; i < results.length; i++) {
+      for (var i = 0; i < 16; i++) {
         $("#article-div").append(
           "<div class='result-div'><img src=" +
             results[i].photo +
@@ -24,9 +24,6 @@ $(document).ready(function () {
     e.preventDefault();
 
     const id = $(e.target).attr("dataId");
-
-    console.log(id);
-    console.log("How is this popping up: ");
 
     $.ajax({
       method: "POST",
