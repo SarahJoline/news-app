@@ -39,7 +39,7 @@ $(document).ready(function () {
   }).then((results) => {
     for (var i = 0; i < results.length; i++) {
       $("#savedArtDiv").append(
-        "<div class='result-div'><img src=" +
+        "<div class='result-div'> <img src=" +
           results[i].photo +
           " alt='Image Not Available'></img><p class='result-headline'>" +
           results[i].headline +
@@ -47,9 +47,47 @@ $(document).ready(function () {
           results[i].link +
           "'>Link to Article</a><button id='remove-Btn' class='remove-article button is-info is-medium' dataId=" +
           results[i]._id +
-          ">remove</button></div>"
+          ">remove</button> | <button id='comment-Btn' class='comment-article button is-info is-medium' dataId=" +
+          results[i]._id +
+          ">notes</button> <div id='notes-div'></div></div>"
       );
     }
+  });
+
+  $(document).on("click", "#comment-Btn", (e) => {
+    e.preventDefault();
+
+    const articleId = $(e.target).attr("dataId");
+
+    console.log("clicked");
+    $("#notes-div").append(`
+        <div class="container-fluid text-center">
+            <h4>Notes:</h4>
+            <h6>
+      ${articleId}
+            </h6>
+            <hr>
+                <ul class="list-group note-container">
+                    
+                            </ul>
+                <textarea placeholder="Add a note"></textarea>
+                <button class="btn btn-primary saveNotes"  data-dismiss="modal" dataId=${articleId} id="save-note">save</button>
+                        </div>`);
+  });
+
+  $(document).on("click", "#save-note", (e) => {
+    e.preventDefault();
+    let text = $("textarea").val();
+    const id = $(e.target).attr("dataId");
+    console.log(id);
+
+    $.ajax({
+      method: "POST",
+      url: "api/comment/" + id,
+      data: { text },
+    }).then((res) => {
+      console.log(res);
+    });
   });
 
   $(document).on("click", "#remove-Btn", (e) => {

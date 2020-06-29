@@ -68,15 +68,38 @@ router.post("/save/:id", (req, res) => {
     });
 });
 
-router.post("/comment", (req, res) => {
-  db.Articles.findByIdAndUpdate(
-    { _id: req.query.id },
-    { $push: { comments: req.query.comment } }
-  )
-    .then(() => {
-      res.send("success");
-    })
-    .catch((err) => res.send(err));
+router.post("/comment/:id", (req, res) => {
+  const newNote = new db.Notes({
+    body: req.body.text,
+    article: req.params.id,
+  });
+
+  console.log(newNote);
+
+  newNote.save((error, note) => {
+    if (error) {
+      console.log(error);
+    } else {
+      db.Articles.findOneAndUpdate(
+        { _id: req.params.id },
+        { $push: { comments: note } }
+      )
+        .then(() => {
+          res.send(articles, notes);
+        })
+        .catch((err) => res.send(err));
+    }
+  });
+});
+
+router.get("/comment", (req, res) => {
+  db.Notes.find((error, doc) => {
+    if (error) {
+      console.log(error);
+    } else {
+      res.json(doc);
+    }
+  });
 });
 
 router.post("/deleteSaved/:id", (req, res) => {

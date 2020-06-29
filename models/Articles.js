@@ -22,10 +22,12 @@ const ArticleSchema = new Schema({
     default: false,
   },
 
-  comments: {
-    type: [Schema.Types.String],
-    default: [],
-  },
+  comments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Notes",
+    },
+  ],
 });
 
 const Article = mongoose.model("Article", ArticleSchema);
