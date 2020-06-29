@@ -92,14 +92,14 @@ router.post("/comment/:id", (req, res) => {
   });
 });
 
-router.get("/comment", (req, res) => {
-  db.Notes.find((error, doc) => {
-    if (error) {
-      console.log(error);
-    } else {
-      res.json(doc);
-    }
-  });
+router.get("/comment/all/:articleId", (req, res) => {
+  db.Notes.find({ article: req.params.articleId })
+    .then((notes) => {
+      res.send(notes);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
 });
 
 router.post("/deleteSaved/:id", (req, res) => {

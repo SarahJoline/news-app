@@ -62,17 +62,27 @@ $(document).ready(function () {
     console.log("clicked");
     $("#notes-div").append(`
         <div class="container-fluid text-center">
-            <h4>Notes:</h4>
-            <h6>
-      ${articleId}
-            </h6>
+            <h4>add a note:</h4>
             <hr>
-                <ul class="list-group note-container">
+                <ul class="list-group note-container" id="note-container">
                     
                             </ul>
                 <textarea placeholder="Add a note"></textarea>
                 <button class="btn btn-primary saveNotes"  data-dismiss="modal" dataId=${articleId} id="save-note">save</button>
                         </div>`);
+
+    $.ajax({
+      method: "GET",
+      url: "api/comment/all/" + articleId,
+    }).then((res) => {
+      res.map((notes) => {
+        console.log(notes);
+
+        $("#note-container")
+          .append(`<li class="list-group-item note">${notes.body}
+                                </li>`);
+      });
+    });
   });
 
   $(document).on("click", "#save-note", (e) => {
