@@ -6,13 +6,13 @@ $(document).ready(function () {
     }).then((results) => {
       for (var i = 0; i < 16; i++) {
         $("#article-div").append(
-          "<div class='result-div'><img src=" +
-            results[i].photo +
-            " alt='Image Not Available'></img><p class='result-headline'>" +
+          "<div class='result-div'><h2 class='result-headline'>" +
             results[i].headline +
-            "</p><a href='https://www.nytimes.com" +
+            "</h2><img src=" +
+            results[i].photo +
+            " alt='Image Not Available' class='art-img'></img><br><a href='https://www.nytimes.com" +
             results[i].link +
-            "'>Link to Article</a><button id='save-Btn' class='save-article button is-info is-medium' dataId=" +
+            "'>Link to Article</a><br><button id='save-Btn' class='save-article button is-info is-medium' dataId=" +
             results[i]._id +
             ">Save Article</button></div>"
         );
@@ -39,13 +39,13 @@ $(document).ready(function () {
   }).then((results) => {
     for (var i = 0; i < results.length; i++) {
       $("#savedArtDiv").append(
-        "<div class='result-div'> <img src=" +
-          results[i].photo +
-          " alt='Image Not Available'></img><p class='result-headline'>" +
+        "<div class='result-div'><h2 class='result-headline'>" +
           results[i].headline +
-          "</p><a href='https://www.nytimes.com" +
+          "</h2> <img src=" +
+          results[i].photo +
+          " alt='Image Not Available'></img><br><a href='https://www.nytimes.com" +
           results[i].link +
-          "'>Link to Article</a><button id='remove-Btn' class='remove-article button is-info is-medium' dataId=" +
+          "'>Link to Article</a><br><button id='remove-Btn' class='remove-article button is-info is-medium' dataId=" +
           results[i]._id +
           ">remove</button> | <button id='comment-Btn' class='comment-article button is-info is-medium' dataId=" +
           results[i]._id +
@@ -59,17 +59,15 @@ $(document).ready(function () {
 
     const articleId = $(e.target).attr("dataId");
 
-    console.log("clicked");
     $("#notes-div").append(`
         <div class="container-fluid text-center">
             <h4>add a note:</h4>
             <hr>
                 <ul class="list-group note-container" id="note-container">
-                    
-                            </ul>
-                <textarea placeholder="Add a note"></textarea>
+                </ul>
+                <textarea placeholder="Add a note"></textarea><br>
                 <button class="btn btn-primary saveNotes"  data-dismiss="modal" dataId=${articleId} id="save-note">save</button>
-                        </div>`);
+        </div>`);
 
     $.ajax({
       method: "GET",
@@ -78,9 +76,9 @@ $(document).ready(function () {
       res.map((notes) => {
         console.log(notes);
 
-        $("#note-container")
-          .append(`<li class="list-group-item note">${notes.body}
-                                </li>`);
+        $("#note-container").append(
+          `<li class="list-group-item note">${notes.body}</li>`
+        );
       });
     });
   });

@@ -1,0 +1,39 @@
+.header-img {
+  background: url(https://i.picsum.photos/id/180/2400/1600.jpg?hmac=Ig-CXcpNdmh51k3kXpNqNqcDYTwXCIaonYiBOnLXBb8);
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  padding: 0px;
+}
+
+#savedArtDiv,
+#article-div {
+  padding: 30px 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.result-div {
+  margin: 15px;
+  padding: 30px 30px;
+  display: table;
+  text-align: center;
+}
+
+.art-img {
+  border-radius: 3px;
+  padding: 5px;
+  height: 100%;
+}
+.result-headline {
+  font-size: 1rem;
+  padding: 5px;
+}
+
+/* a {
+  padding: 20px 5px;
+}
+
+#comment-Btn,
+#remove-Btn {
+  padding: 5px;
+}  */
