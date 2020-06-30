@@ -1,9 +1,8 @@
 const express = require("express");
 const app = express();
-const path = require("path");
 const mongoose = require("mongoose");
 const connection = mongoose.connection;
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 const MONGO_URI =
   process.env.MONGODB_URI || "mongodb://localhost/news-articles";
 
@@ -27,13 +26,6 @@ app.use("/api", apiRoutes);
 
 const htmlRoutes = require("./routes/htmlRoutes");
 app.use("/", htmlRoutes);
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  });
-}
 
 app.listen(PORT, () => {
   console.log(`listening at: http://localhost:${PORT}`);
