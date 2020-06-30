@@ -6,13 +6,15 @@ $(document).ready(function () {
     }).then((results) => {
       for (var i = 0; i < 16; i++) {
         $("#article-div").append(
-          "<div class='result-div'><h2 class='result-headline'>" +
-            results[i].headline +
-            "</h2><img src=" +
+          "<div class='result-div' style='background-image: url(" +
             results[i].photo +
-            " alt='Image Not Available' class='art-img'></img><br><a href='https://www.nytimes.com" +
+            ")'><div class='result-info'><h5 class='result-headline'>" +
+            results[i].headline +
+            "</h5><br><p class='result-summary'>" +
+            results[i].summary +
+            "</p><a href='https://www.nytimes.com" +
             results[i].link +
-            "'>Link to Article</a><br><button id='save-Btn' class='save-article button is-info is-medium' dataId=" +
+            "' class='result-anchor'>Link to Article</a><br><button id='save-Btn' class='save-article button is-info is-medium' dataId=" +
             results[i]._id +
             ">Save Article</button></div>"
         );
@@ -39,17 +41,19 @@ $(document).ready(function () {
   }).then((results) => {
     for (var i = 0; i < results.length; i++) {
       $("#savedArtDiv").append(
-        "<div class='result-div'><h2 class='result-headline'>" +
-          results[i].headline +
-          "</h2> <img src=" +
+        "<div class='result-div' style='background-image: url(" +
           results[i].photo +
-          " alt='Image Not Available'></img><br><a href='https://www.nytimes.com" +
+          ")'><div class='result-info'><h5 class='result-headline'>" +
+          results[i].headline +
+          "</h5><br><p class='result-summary'>" +
+          results[i].summary +
+          "</p><a href='https://www.nytimes.com" +
           results[i].link +
-          "'>Link to Article</a><br><button id='remove-Btn' class='remove-article button is-info is-medium' dataId=" +
+          "' class='result-anchor'>Link to Article</a>><br><button id='remove-Btn' class='remove-article button is-info is-medium' dataId=" +
           results[i]._id +
           ">remove</button> | <button id='comment-Btn' class='comment-article button is-info is-medium' dataId=" +
           results[i]._id +
-          ">notes</button> <div id='notes-div'></div></div>"
+          ">notes</button></div></div><div id='notes-div'></div>"
       );
     }
   });
