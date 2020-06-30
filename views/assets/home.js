@@ -12,7 +12,7 @@ $(document).ready(function () {
             results[i].headline +
             "</h5><br><p class='result-summary'>" +
             results[i].summary +
-            "</p><a href='https://www.nytimes.com" +
+            "</p><a href='https://www.enn.com" +
             results[i].link +
             "' class='result-anchor'>Link to Article</a><br><button id='save-Btn' class='save-article button is-info is-medium' dataId=" +
             results[i]._id +
@@ -47,9 +47,9 @@ $(document).ready(function () {
           results[i].headline +
           "</h5><br><p class='result-summary'>" +
           results[i].summary +
-          "</p><a href='https://www.nytimes.com" +
+          "</p><a href='https://www.enn.com" +
           results[i].link +
-          "' class='result-anchor'>Link to Article</a>><br><button id='remove-Btn' class='remove-article button is-info is-medium' dataId=" +
+          "' class='result-anchor'>Link to Article</a><br><button id='remove-Btn' class='remove-article button is-info is-medium' dataId=" +
           results[i]._id +
           ">remove</button> | <button id='comment-Btn' class='comment-article button is-info is-medium' dataId=" +
           results[i]._id +
@@ -100,6 +100,7 @@ $(document).ready(function () {
     }).then((res) => {
       console.log(res);
     });
+    window.location = "/saved-articles";
   });
 
   $(document).on("click", "#remove-Btn", (e) => {
