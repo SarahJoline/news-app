@@ -51,9 +51,9 @@ $(document).ready(function () {
           results[i].link +
           "' class='result-anchor'>Link to Article</a><br><button id='remove-Btn' class='remove-article button is-info is-medium' dataId=" +
           results[i]._id +
-          ">remove</button> | <button id='comment-Btn' class='comment-article button is-info is-medium' dataId=" +
+          ">remove</button> | <button id='comment-Btn' class='comment-article button is-info is-medium' data-toggle='modal' data-target='#note-modal' dataId=" +
           results[i]._id +
-          ">notes</button></div></div><div id='notes-div'></div>"
+          ">notes</button></div></div>"
       );
     }
   });
@@ -64,14 +64,27 @@ $(document).ready(function () {
     const articleId = $(e.target).attr("dataId");
 
     $("#notes-div").append(`
-        <div class="container-fluid text-center">
-            <h4>add a note:</h4>
-            <hr>
-                <ul class="list-group note-container" id="note-container">
-                </ul>
-                <textarea placeholder="Add a note"></textarea><br>
-                <button class="btn btn-primary saveNotes"  data-dismiss="modal" dataId=${articleId} id="save-note">save</button>
-        </div>`);
+    <div class="modal fade" id="note-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">add a note:</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <ol class="list-group note-container" id="note-container">
+        </ol>
+        <textarea placeholder="Add a note"></textarea
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button class="btn btn-primary saveNotes"  data-dismiss="modal" dataId=${articleId} id="save-note">save</button>
+        </div>
+      </div>
+    </div>
+  </div>`);
 
     $.ajax({
       method: "GET",
