@@ -1,9 +1,9 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 3000;
 const path = require("path");
 const mongoose = require("mongoose");
 const connection = mongoose.connection;
+const PORT = process.env.PORT || 3000;
 const MONGO_URI =
   process.env.MONGODB_URI || "mongodb://localhost/news-articles";
 
