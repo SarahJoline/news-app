@@ -7,6 +7,11 @@ const ArticleSchema = new Schema({
     required: "Must pass a string value for photo",
   },
 
+  summary: {
+    type: String,
+    required: "String value for summary, please.",
+  },
+
   headline: {
     type: String,
     required: "Must pass a string value for headline",

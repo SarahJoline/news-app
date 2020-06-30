@@ -5,13 +5,15 @@ const db = require("../models");
 const router = express.Router();
 
 router.get("/all", (req, res) => {
-  axios.get("https://www.nytimes.com/section/world").then((urlResponse) => {
+  axios.get("https://www.enn.com").then((urlResponse) => {
     let $ = cheerio.load(urlResponse.data);
 
-    $("div.css-1l4spti").each((i, element) => {
+    $("div.col-md-6").each((i, element) => {
       let result = {};
-      result.photo = $(element).find("figure").attr("itemid");
-      result.headline = $(element).find("h2").text();
+
+      result.photo = $(element).find("img").attr("src");
+      result.summary = $(element).find("p").text();
+      result.headline = $(element).find("h3").find("a").text();
       result.link = $(element).find("a").attr("href");
 
       let newArt = new db.Articles(result);
@@ -20,7 +22,7 @@ router.get("/all", (req, res) => {
         headline: result.headline,
       }).then((res) => {
         if (res.length > 0) {
-          console.log(newArt);
+          console.log("up to date");
         } else {
           newArt.save((err, doc) => {
             if (err) {

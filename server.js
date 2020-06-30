@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 3000;
 const mongoose = require("mongoose");
 const connection = mongoose.connection;
 const MONGO_URI =
-  process.env.MONGODB_URI || "mongodb://localhost/deploy_todoDB";
+  process.env.MONGODB_URI || "mongodb://localhost/news-articles";
 
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
