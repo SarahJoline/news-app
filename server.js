@@ -6,16 +6,14 @@ const PORT = process.env.PORT || 8000;
 const MONGO_URI =
   process.env.MONGODB_URI || "mongodb://localhost/news-articles";
 
-mongoose.connect(MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-});
-
-connection.on("error", console.error.bind(console, "connection error:"));
-connection.once("open", function () {
-  console.log("connected to db instance");
-});
+mongoose
+  .connect(MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  })
+  .then(() => console.log("connected to mongoDB"))
+  .catch((err) => console.log(err));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
