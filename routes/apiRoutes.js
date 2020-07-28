@@ -28,7 +28,7 @@ router.get("/all", (req, res) => {
             if (err) {
               console.log(err);
             } else {
-              console.log(doc);
+              res.json(doc);
             }
           });
         }
