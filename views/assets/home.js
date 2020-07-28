@@ -4,8 +4,8 @@ $(document).ready(function () {
       type: "GET",
       url: "/api/articles",
     }).then((results) => {
+      console.log(results);
       for (var i = 0; i < 16; i++) {
-        console.log(results[i].photo);
         $("#article-div").append(
           "<div class='result-div' style='background-image: url(" +
             results[i].photo +
