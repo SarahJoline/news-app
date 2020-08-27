@@ -129,10 +129,10 @@ $(document).ready(function () {
     });
     window.location = "/saved-articles";
   });
-});
 
-$(".logo").on("mouseover", function () {
-  const nav = document.querySelector(".navbar-nav");
+  $(".logo").on("mouseover", function () {
+    const nav = document.querySelector(".navbar-nav");
 
-  nav.classList.toggle("nav-active");
+    nav.classList.toggle("nav-active");
+  });
 });
