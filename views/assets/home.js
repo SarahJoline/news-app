@@ -4,7 +4,6 @@ $(document).ready(function () {
       type: "GET",
       url: "/api/articles",
     }).then((results) => {
-      console.log(results);
       for (var i = 0; i < 16; i++) {
         $("#article-div").append(
           "<div class='result-div' style='background-image: url(" +
@@ -15,7 +14,7 @@ $(document).ready(function () {
             results[i].summary +
             "</p><a href='https://www.enn.com" +
             results[i].link +
-            "' class='result-anchor'>Link to Article</a><br><button id='save-Btn' class='save-article button is-info is-medium' dataId=" +
+            "' class='result-anchor'>Link to Article</a><br><button id='save-Btn' dataId=" +
             results[i]._id +
             ">Save Article</button></div>"
         );
@@ -50,9 +49,9 @@ $(document).ready(function () {
           results[i].summary +
           "</p><a href='https://www.enn.com" +
           results[i].link +
-          "' class='result-anchor'>Link to Article</a><br><button id='remove-Btn' class='remove-article button is-info is-medium' dataId=" +
+          "' class='result-anchor'>Link to Article</a><br><button id='remove-Btn'  dataId=" +
           results[i]._id +
-          ">remove</button> | <button id='comment-Btn' class='comment-article button is-info is-medium' data-toggle='modal' data-target='#note-modal' dataId=" +
+          ">remove</button> | <button id='comment-Btn' data-toggle='modal' data-target='#note-modal' dataId=" +
           results[i]._id +
           ">notes</button></div></div>"
       );
@@ -77,7 +76,7 @@ $(document).ready(function () {
         <div class="modal-body">
         <ol class="list-group note-container" id="note-container">
         </ol>
-        <textarea placeholder="Add a note"></textarea
+        <textarea placeholder="Add a note" id="textbox"></textarea>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -130,4 +129,10 @@ $(document).ready(function () {
     });
     window.location = "/saved-articles";
   });
+});
+
+$(".logo").on("mouseover", function () {
+  const nav = document.querySelector(".navbar-nav");
+
+  nav.classList.toggle("nav-active");
 });
