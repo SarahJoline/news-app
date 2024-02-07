@@ -1,11 +1,13 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 const connection = mongoose.connection;
 const PORT = process.env.PORT || 8000;
+
+dotenv.config();
 const MONGO_URI =
   process.env.MONGODB_URI || "mongodb://localhost/news-articles";
-
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
