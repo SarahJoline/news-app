@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "render-build": "npm install nodemon server.js"
+    "render-build": "NPM_CONFIG_PRODUCTION=false npm install && nodemon server.js"
   },
   "repository": {
     "type": "git",
