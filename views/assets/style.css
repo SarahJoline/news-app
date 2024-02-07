@@ -2,15 +2,6 @@ nav {
   height: 64px;
 }
 
-.header-img {
-  background: url(https://i.picsum.photos/id/180/2400/1600.jpg?hmac=Ig-CXcpNdmh51k3kXpNqNqcDYTwXCIaonYiBOnLXBb8);
-  background-size: cover;
-  background-position: center;
-  height: 200px;
-  padding: 0px;
-  border-radius: 0px;
-}
-
 #scrapeBtn {
   position: absolute;
   right: 20px;
