@@ -11,7 +11,7 @@ router.get("/all", (req, res) => {
     $("div.col-md-6").each((i, element) => {
       let result = {};
 
-      result.photo = $(element).find("img").attr("src");
+      result.photo = `https:${$(element).find("img").attr("src")}`;
       result.summary = $(element).find("p").text();
       result.headline = $(element).find("h3").find("a").text();
       result.link = $(element).find("a").attr("href");
@@ -20,15 +20,15 @@ router.get("/all", (req, res) => {
 
       db.Articles.find({
         headline: result.headline,
-      }).then((res) => {
-        if (res.length > 0) {
+      }).then((response) => {
+        if (response.length > 0) {
           console.log("up to date");
         } else {
           newArt.save((err, doc) => {
             if (err) {
               console.log(err);
             } else {
-              res.json(doc);
+              response.json(doc);
             }
           });
         }
