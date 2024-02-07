@@ -76,8 +76,6 @@ router.post("/comment/:id", (req, res) => {
     article: req.params.id,
   });
 
-  console.log(newNote);
-
   newNote.save((error, note) => {
     if (error) {
       console.log(error);
