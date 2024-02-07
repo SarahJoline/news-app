@@ -108,3 +108,12 @@ nav {
 .nav-active {
   transform: translateX(0%);
 }
+
+.header-img {
+  background-image: url(https://fastly.picsum.photos/id/18/2500/1667.jpg?hmac=JR0Z_jRs9rssQHZJ4b7xKF82kOj8-4Ackq75D_9Wmz8);
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  padding: 0px;
+  border-radius: 0px;
+}
